@@ -23,16 +23,14 @@ public class TokenHandlerInterceptor extends HandlerInterceptorAdapter {
 		// 跨域
 		response.setHeader("Access-Control-Allow-Origin", "*");
 		// 获取token
-		String gas = request.getHeader("gas");
+		String gas = request.getHeader("gasToken");
 		//获取请求当时的uri
-		String uri = request.getRequestURI();
-		System.out.println("当时的uri："+uri);
 
 		if (handler instanceof DefaultServletHttpRequestHandler) {
 			return true;
 		}
 		// 验证token
-		TokenUtil.vdtToken(gas);
+		TokenUtil.vdtTokenUserAndPermission(gas, request.getRequestURI());
 		return true;
 	}
 

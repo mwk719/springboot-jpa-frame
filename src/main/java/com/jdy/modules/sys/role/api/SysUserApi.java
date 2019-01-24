@@ -2,7 +2,9 @@ package com.jdy.modules.sys.role.api;
 
 import javax.servlet.http.HttpServletRequest;
 
+import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -30,8 +32,12 @@ public interface SysUserApi {
 	@PostMapping("add")
 	void add(@RequestParam String username, @RequestParam String password) throws BusinessException;
 
-	@ApiOperation("退出")
+	@ApiOperation("删除系统用户")
+	@DeleteMapping("deleteSysUser/{adminId}")
+	RespVo<Object> deleteSysUser(@PathVariable Integer adminId) throws BusinessException;
+	
+	@ApiOperation("退出系统")
 	@GetMapping("logout")
-	String logout() throws BusinessException;
+	RespVo<Object> logout(HttpServletRequest request) throws BusinessException;
 
 }

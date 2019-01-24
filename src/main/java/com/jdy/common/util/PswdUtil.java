@@ -21,5 +21,9 @@ public class PswdUtil {
 	public static String getSysPswd(String password, String solt) {
 		return DigestUtil.md5Hex(password + solt);
 	}
+	
+	public static void main(String[] args) {
+		System.out.println(getSysPswd("123456", "客服00cc537eb6ee460c8e8e5adec36e4738"));
+	}
 
 }

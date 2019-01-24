@@ -24,6 +24,7 @@ public class MyWebMvcConfigurer implements WebMvcConfigurer {
 		// excludePathPatterns 用于排除拦截
 		registry.addInterceptor(new TokenHandlerInterceptor()).addPathPatterns("/sys/**")
 				.excludePathPatterns("/swagger-ui.html/**")// swagger-ui.html
+				.excludePathPatterns("/sys/sysUser/logout") // 退出
 				.excludePathPatterns("/sys/sysUser/login/**"); // 登录页
 	}
 }

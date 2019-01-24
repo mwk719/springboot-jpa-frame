@@ -47,7 +47,7 @@ public class JwtUtil {
 	/**
 	 * 有效时间
 	 */
-	private static final Integer DURATION = 60 * 60 * 24;
+	public static final Integer DURATION = 60 * 60 * 24;
 
 	/**
 	 * 使用JWT默认方式，生成加解密密钥

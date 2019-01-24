@@ -76,6 +76,24 @@ public class StringUtils {
 	}
 
 	/**
+	 * 判断数组是否为空
+	 * 
+	 * @param object
+	 * @return
+	 */
+	public static boolean ArryIsBlank(Object[] object) {
+		if (object == null || object.length == 0)
+			return true;
+		return false;
+	}
+
+	public static boolean ArryIsNotBlank(Object[] object) {
+		if (object != null && object.length > 0)
+			return true;
+		return false;
+	}
+
+	/**
 	 * 数组转string ，分割
 	 * 
 	 * @param str
@@ -188,39 +206,14 @@ public class StringUtils {
 
 	}
 
-	/**
-	 * 根据地址名称判断用户所属地
-	 * 
-	 * @param address
-	 * @return
-	 */
-	public static Integer getDependency(String address) {
-		if (StrUtil.containsAny(address, "阿荣旗"))
-			return 1;
-		if (StrUtil.containsAny(address, "牙克石"))
-			return 2;
-		return 1;
-	}
-
-	/**
-	 * 根据地址id判断用户所属地
-	 * 
-	 * @param address
-	 * @return
-	 */
-	public static String getAddressByDependency(Integer dependency) {
-
-		switch (dependency) {
-		case 1:
-			return "阿荣旗";
-		case 2:
-			return "牙克石";
-		}
-		return "阿荣旗";
-	}
-
 	public static void main(String[] args) {
-		System.out.println(getDependency("克阿克荣旗牙克石"));
+
+		String a = "";
+		int b = 1;
+		Integer c = 3;
+
+		throwCheckEmpty(a, b, c);
+
 	}
 
 }

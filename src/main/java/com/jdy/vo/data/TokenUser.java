@@ -8,6 +8,8 @@ public class TokenUser {
 
 	private String token;
 	
+	private String[] purl;
+	
 	
 
 	public TokenUser() {
@@ -19,6 +21,18 @@ public class TokenUser {
 		this.adminId = adminId;
 		this.roleId = roleId;
 		this.token = token;
+	}
+
+	
+	
+
+
+	public String[] getPurl() {
+		return purl;
+	}
+
+	public void setPurl(String[] purl) {
+		this.purl = purl;
 	}
 
 	public String getToken() {

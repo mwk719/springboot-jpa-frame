@@ -19,6 +19,12 @@ public enum CodeMsg {
 	
 	NO_POWER("管理员没有该权限",201),
 	NO_ROLE("该用户未分配角色",202),
+	AUTHORIZATION_FAILURE("授权失败，请再重新登陆",203),
+	//请求拦截校验
+	LOGINEXPIRE("您登陆已过期，请重新登陆", 211),//
+	OYHERLOGIN("您已在其他地方登陆", 212),//
+	NOEXIT("您的信息已不存在", 213),//
+	NO_LOGIN("您尚未登陆，请先去登陆", 214),//
 	
 	/**
 	 * 301-700
@@ -89,10 +95,7 @@ public enum CodeMsg {
 	
 	CHECK_BANNER_MAX("banner 超出最大生效数量",233),//
 	
-	//请求拦截校验
-	LOGINEXPIRE("登陆已过期，请您重新登陆", 301),//
-	OYHERLOGIN("您已在其他地方登陆", 302),//
-	NOEXIT("您的信息已不存在", 303),//
+	
 	
 	OPERATION_FALSE("操作执行失败",400),//
 	
