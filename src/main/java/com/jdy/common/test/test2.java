@@ -1,8 +1,6 @@
 package com.jdy.common.test;
 
 import com.jdy.common.util.AESUtil;
-import com.jdy.common.util.BeanUtil;
-import com.jdy.vo.data.TokenUser;
 
 public class test2 {
 

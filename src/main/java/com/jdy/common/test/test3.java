@@ -9,7 +9,6 @@ public class test3 {
 		String jti = "11111";
 
 		String token1 = JwtUtil.buildJWT(sub, jti, 60 * 60);
-		String token2 = JwtUtil.buildJWT(sub, jti, 60 * 60);
 
 		
 		System.out.println(JwtUtil.checkJWT(token1, sub));

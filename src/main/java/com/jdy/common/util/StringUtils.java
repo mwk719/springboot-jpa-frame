@@ -61,6 +61,7 @@ public class StringUtils {
 		return !isBlank(object);
 	}
 
+	@SuppressWarnings("rawtypes")
 	public static boolean listIsBlank(List list) {
 
 		if (list == null || list.size() == 0)
@@ -68,6 +69,7 @@ public class StringUtils {
 		return false;
 	}
 
+	@SuppressWarnings("rawtypes")
 	public static boolean listIsNotBlank(List list) {
 
 		if (list != null && list.size() > 0)
