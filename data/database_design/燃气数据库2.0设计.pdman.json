@@ -837,6 +837,12 @@
               "chnname": "方法名"
             },
             {
+              "name": "params",
+              "type": "DefaultString",
+              "remark": "",
+              "chnname": "参数"
+            },
+            {
               "name": "ip",
               "type": "DefaultString",
               "remark": "",
@@ -1099,25 +1105,6 @@
               }
             ],
             "sourceAnchor": 6,
-            "targetAnchor": 1
-          },
-          {
-            "shape": "erdRelation",
-            "relation": "0,n:1",
-            "source": "9eef3010",
-            "target": "9eef3010",
-            "id": "4f836540",
-            "controlPoints": [
-              {
-                "x": 1009.27734375,
-                "y": 192.28846153846155
-              },
-              {
-                "x": 1490.72265625,
-                "y": 192.28846153846155
-              }
-            ],
-            "sourceAnchor": 0,
             "targetAnchor": 1
           },
           {
