@@ -1,11 +1,23 @@
 package com.jdy.vo.resp;
 
+import com.jdy.data.common.dto.Pager;
+
 public class RespVo<T> {
 
 	private RespHeadVo head;
 
+	private Pager pager;
 
 	private T body;
+
+	public Pager getPager() {
+		return pager;
+	}
+
+	public RespVo<T> setPager(Pager pager) {
+		this.pager = pager;
+		return this;
+	}
 
 	public static RespVo<Object> build() {
 		return new RespVo<Object>();
@@ -29,7 +41,6 @@ public class RespVo<T> {
 		this.head = head;
 	}
 
-
 	public RespVo<T> setBody(T body) {
 		this.body = body;
 		return this;
@@ -38,8 +49,5 @@ public class RespVo<T> {
 	public T getBody() {
 		return body;
 	}
-	
-	
-
 
 }

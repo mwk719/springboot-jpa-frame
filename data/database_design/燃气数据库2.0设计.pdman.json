@@ -805,7 +805,7 @@
           "fields": [
             {
               "name": "id",
-              "type": "Integer",
+              "type": "BigInt",
               "remark": "",
               "chnname": "",
               "pk": true,
@@ -1244,17 +1244,6 @@
           "to": {
             "entity": "sys_department",
             "field": "department_id"
-          }
-        },
-        {
-          "relation": "0,n:1",
-          "from": {
-            "entity": "sys_role",
-            "field": "role_id"
-          },
-          "to": {
-            "entity": "sys_role",
-            "field": "role_id"
           }
         },
         {

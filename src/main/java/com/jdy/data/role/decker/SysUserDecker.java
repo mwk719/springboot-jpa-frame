@@ -24,4 +24,9 @@ public class SysUserDecker {
 
 	}
 
+	public SysUser findById(Integer adminId) {
+		Optional<SysUser> opt = sysUserRepository.findById(adminId);
+		return opt.isPresent() ? opt.get() : null;
+	}
+
 }

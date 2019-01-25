@@ -45,14 +45,8 @@ public class TokenUtil {
 			throw new BusinessException(CodeMsg.NO_LOGIN);
 		}
 
-		String beanstr = null;
-		TokenUser t = null;
-		try {
-			beanstr = AESUtil.decryptStr(token);
-			t = BeanUtil.stringToBean(beanstr, TokenUser.class);
-		} catch (Exception e) {
-			throw new BusinessException(CodeMsg.AUTHORIZATION_FAILURE);
-		}
+		TokenUser t = decryptTokenUser(token);
+		
 		// 验证token是否有效
 		vdtToken(t.getToken());
 
@@ -63,6 +57,22 @@ public class TokenUtil {
 		// 权限不匹配
 		if (!StrUtil.containsAny(uri, t.getPurl())) {
 			throw new BusinessException(CodeMsg.NO_POWER);
+		}
+
+	}
+
+	/**
+	 * 将tokrn解密为tokenuser
+	 * @param token
+	 * @return
+	 */
+	public static TokenUser decryptTokenUser(String token) {
+		try {
+			String beanstr = AESUtil.decryptStr(token);
+			TokenUser t = BeanUtil.stringToBean(beanstr, TokenUser.class);
+			return t;
+		} catch (Exception e) {
+			throw new BusinessException(CodeMsg.AUTHORIZATION_FAILURE);
 		}
 
 	}

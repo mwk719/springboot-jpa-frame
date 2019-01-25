@@ -7,6 +7,7 @@ import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.jdy.common.annotation.SysLog;
 import com.jdy.common.config.exception.BusinessException;
 import com.jdy.common.util.CodeMsg;
 import com.jdy.common.util.PswdUtil;
@@ -64,12 +65,14 @@ public class SysUserService implements SysUserApi {
 		return RespVo.build().success().setBody(TokenUtil.tokenSetRedis(tu));
 	}
 
+	@SysLog(value = "获取系统用户列表")
 	@Override
 	public RespVo<Object> getUserList() {
 		// throw new BusinessException(CodeMsg.LOGINSUCCESS);
 		return RespVo.build().success().setBody("获取系统用户列表");
 	}
 
+	@SysLog(value = "新增系统用户列表")
 	@Override
 	public void add(String username, String password) {
 		SysUser u = new SysUser();
@@ -82,6 +85,7 @@ public class SysUserService implements SysUserApi {
 		sysUserDecker.save(u);
 	}
 
+	@SysLog(value = "删除系统用户") // 这里添加了AOP的自定义注解
 	@Override
 	public RespVo<Object> deleteSysUser(@PathVariable Integer adminId) throws BusinessException {
 		return RespVo.build().success().setBody("删除用户成功");

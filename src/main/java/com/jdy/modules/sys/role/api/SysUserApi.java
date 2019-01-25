@@ -25,7 +25,7 @@ public interface SysUserApi {
 			throws BusinessException;
 
 	@ApiOperation("获取系统用户列表")
-	@GetMapping("userList")
+	@GetMapping("list")
 	RespVo<Object> getUserList() throws BusinessException;
 
 	@ApiOperation("新增系统用户列表")
@@ -33,9 +33,9 @@ public interface SysUserApi {
 	void add(@RequestParam String username, @RequestParam String password) throws BusinessException;
 
 	@ApiOperation("删除系统用户")
-	@DeleteMapping("deleteSysUser/{adminId}")
+	@DeleteMapping("delete/{adminId}")
 	RespVo<Object> deleteSysUser(@PathVariable Integer adminId) throws BusinessException;
-	
+
 	@ApiOperation("退出系统")
 	@GetMapping("logout")
 	RespVo<Object> logout(HttpServletRequest request) throws BusinessException;

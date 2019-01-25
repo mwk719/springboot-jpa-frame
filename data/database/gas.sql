@@ -11,11 +11,41 @@
  Target Server Version : 80013
  File Encoding         : 65001
 
- Date: 25/01/2019 10:15:45
+ Date: 25/01/2019 13:41:37
 */
 
 SET NAMES utf8mb4;
 SET FOREIGN_KEY_CHECKS = 0;
+
+-- ----------------------------
+-- Table structure for sys_operating_log
+-- ----------------------------
+DROP TABLE IF EXISTS `sys_operating_log`;
+CREATE TABLE `sys_operating_log`  (
+  `id` bigint(20) NOT NULL AUTO_INCREMENT,
+  `create_time` datetime(0) NULL DEFAULT NULL,
+  `update_time` datetime(0) NULL DEFAULT NULL,
+  `address` varchar(255) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL,
+  `ip` varchar(255) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL,
+  `method` varchar(255) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL,
+  `operation` varchar(255) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL,
+  `params` varchar(255) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL,
+  `role_name` varchar(255) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL,
+  `username` varchar(255) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL,
+  `valid` int(11) NULL DEFAULT NULL,
+  PRIMARY KEY (`id`) USING BTREE
+) ENGINE = MyISAM AUTO_INCREMENT = 1 CHARACTER SET = utf8 COLLATE = utf8_general_ci ROW_FORMAT = Dynamic;
+
+-- ----------------------------
+-- Records of sys_operating_log
+-- ----------------------------
+INSERT INTO `sys_operating_log` VALUES (1, '2019-01-25 03:31:07', '2019-01-25 03:31:07', NULL, '0:0:0:0:0:0:0:1', 'com.jdy.modules.sys.role.service.SysUserService.deleteSysUser', '删除系统用户', '[1]', '管理员', '管理员', 1);
+INSERT INTO `sys_operating_log` VALUES (2, '2019-01-25 03:58:02', '2019-01-25 03:58:02', NULL, '0:0:0:0:0:0:0:1', 'com.jdy.modules.sys.role.service.SysUserService.deleteSysUser', '删除系统用户', '[1]', '管理员', '管理员', 1);
+INSERT INTO `sys_operating_log` VALUES (3, '2019-01-25 03:58:38', '2019-01-25 03:58:38', NULL, '0:0:0:0:0:0:0:1', 'com.jdy.modules.sys.role.service.SysUserService.getUserList', '获取系统用户列表', '[]', '管理员', '管理员', 1);
+INSERT INTO `sys_operating_log` VALUES (4, '2019-01-25 04:02:03', '2019-01-25 04:02:03', NULL, '0:0:0:0:0:0:0:1', 'com.jdy.modules.sys.log.service.SysOperatingLogService.getLogList', '查看系统操作日志', '[]', '管理员', '管理员', 1);
+INSERT INTO `sys_operating_log` VALUES (5, '2019-01-25 04:02:10', '2019-01-25 04:02:10', NULL, '0:0:0:0:0:0:0:1', 'com.jdy.modules.sys.log.service.SysOperatingLogService.getLogList', '查看系统操作日志', '[]', '管理员', '管理员', 1);
+INSERT INTO `sys_operating_log` VALUES (6, '2019-01-25 04:12:52', '2019-01-25 04:12:52', NULL, '0:0:0:0:0:0:0:1', 'com.jdy.modules.sys.log.service.SysOperatingLogService.getLogList', '查看系统操作日志', '[{\"valid\":1,\"total\":1,\"size\":10,\"count\":5,\"page\":1}]', '管理员', '管理员', 1);
+INSERT INTO `sys_operating_log` VALUES (7, '2019-01-25 05:40:24', '2019-01-25 05:40:24', NULL, '0:0:0:0:0:0:0:1', 'com.jdy.modules.sys.log.service.SysOperatingLogService.getLogList', '查看系统操作日志', '[{\"valid\":1,\"total\":1,\"size\":10,\"count\":6,\"page\":1}]', '管理员', '管理员', 1);
 
 -- ----------------------------
 -- Table structure for sys_permission
@@ -30,14 +60,15 @@ CREATE TABLE `sys_permission`  (
   `url` varchar(255) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL,
   `valid` int(11) NULL DEFAULT NULL,
   PRIMARY KEY (`p_id`) USING BTREE
-) ENGINE = MyISAM AUTO_INCREMENT = 1 CHARACTER SET = utf8 COLLATE = utf8_general_ci ROW_FORMAT = Dynamic;
+) ENGINE = MyISAM AUTO_INCREMENT = 4 CHARACTER SET = utf8 COLLATE = utf8_general_ci ROW_FORMAT = Dynamic;
 
 -- ----------------------------
 -- Records of sys_permission
 -- ----------------------------
-INSERT INTO `sys_permission` VALUES (1, NULL, NULL, '\r\n新增系统用户', 0, 'sysUser/userList', 1);
-INSERT INTO `sys_permission` VALUES (2, NULL, NULL, '系统用户列表', 0, 'sysUser/add', NULL);
-INSERT INTO `sys_permission` VALUES (3, NULL, NULL, '删除系统用户', NULL, 'sysUser/deleteSysUser', NULL);
+INSERT INTO `sys_permission` VALUES (1, NULL, NULL, '\r\n新增系统用户', 0, 'sysUser/list', 1);
+INSERT INTO `sys_permission` VALUES (2, NULL, NULL, '系统用户列表', 0, 'sysUser/add', 1);
+INSERT INTO `sys_permission` VALUES (3, NULL, NULL, '删除系统用户', 0, 'sysUser/delete', 1);
+INSERT INTO `sys_permission` VALUES (4, NULL, NULL, '查看系统操作日志', 0, 'sys/log', 1);
 
 -- ----------------------------
 -- Table structure for sys_region
@@ -84,7 +115,7 @@ CREATE TABLE `sys_role_permission`  (
   `valid` int(11) NULL DEFAULT NULL,
   `id` int(11) NOT NULL AUTO_INCREMENT,
   PRIMARY KEY (`id`) USING BTREE
-) ENGINE = MyISAM AUTO_INCREMENT = 1 CHARACTER SET = utf8 COLLATE = utf8_general_ci ROW_FORMAT = Fixed;
+) ENGINE = MyISAM AUTO_INCREMENT = 8 CHARACTER SET = utf8 COLLATE = utf8_general_ci ROW_FORMAT = Fixed;
 
 -- ----------------------------
 -- Records of sys_role_permission
@@ -92,6 +123,7 @@ CREATE TABLE `sys_role_permission`  (
 INSERT INTO `sys_role_permission` VALUES (1, 1, NULL, 1);
 INSERT INTO `sys_role_permission` VALUES (1, 2, NULL, 2);
 INSERT INTO `sys_role_permission` VALUES (2, 1, NULL, 3);
+INSERT INTO `sys_role_permission` VALUES (2, 4, NULL, 8);
 INSERT INTO `sys_role_permission` VALUES (2, 2, NULL, 5);
 INSERT INTO `sys_role_permission` VALUES (1, 3, NULL, 6);
 INSERT INTO `sys_role_permission` VALUES (2, 3, NULL, 7);
