@@ -6,7 +6,7 @@ import org.springframework.web.bind.annotation.ControllerAdvice;
 import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.bind.annotation.ResponseBody;
 
-import com.jdy.vo.resp.RespVo;
+import com.jdy.common.vo.resp.RespVo;
 
 
 /**

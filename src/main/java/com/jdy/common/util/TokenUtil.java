@@ -5,8 +5,8 @@ import java.util.Iterator;
 import java.util.List;
 
 import com.jdy.common.config.exception.BusinessException;
-import com.jdy.vo.data.TokenUser;
-import com.jdy.vo.data.TokenUsers;
+import com.jdy.common.dto.TokenUser;
+import com.jdy.common.dto.TokenUsers;
 
 import cn.hutool.core.util.StrUtil;
 

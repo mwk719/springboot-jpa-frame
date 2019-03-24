@@ -283,10 +283,10 @@
           "chnname": "权限信息"
         },
         {
-          "title": "sys_module_item",
+          "title": "sys_menu",
           "fields": [
             {
-              "name": "module_id",
+              "name": "menu_id",
               "type": "Integer",
               "remark": "",
               "chnname": "",
@@ -294,10 +294,10 @@
               "notNull": true
             },
             {
-              "name": "module",
+              "name": "menu",
               "type": "DefaultString",
               "remark": "",
-              "chnname": "模块名称"
+              "chnname": "菜单名称"
             },
             {
               "name": "parent_id",
@@ -358,7 +358,7 @@
               "relationNoShow": true
             }
           ],
-          "chnname": "模块列表"
+          "chnname": "菜单列表"
         },
         {
           "title": "sys_region",
@@ -589,7 +589,7 @@
           "chnname": "部门与地区"
         },
         {
-          "title": "sys_module_role",
+          "title": "sys_menu_role",
           "fields": [
             {
               "name": "id",
@@ -601,8 +601,8 @@
               "autoIncrement": true
             },
             {
-              "name": "module_id",
-              "type": "DefaultString",
+              "name": "menu_id",
+              "type": "Integer",
               "remark": "",
               "chnname": "模块id",
               "pk": false,
@@ -610,7 +610,7 @@
             },
             {
               "name": "role_id",
-              "type": "DefaultString",
+              "type": "Integer",
               "remark": "",
               "chnname": "角色id"
             },
@@ -667,7 +667,7 @@
               "relationNoShow": true
             }
           ],
-          "chnname": "模块与角色"
+          "chnname": "菜单与角色"
         },
         {
           "title": "sys_role_permission",
@@ -1045,7 +1045,7 @@
           },
           {
             "shape": "table",
-            "title": "sys_module_role",
+            "title": "sys_menu_role",
             "moduleName": false,
             "x": 1670,
             "y": -20,
@@ -1053,7 +1053,7 @@
           },
           {
             "shape": "table",
-            "title": "sys_module_item",
+            "title": "sys_menu",
             "moduleName": false,
             "x": 2060,
             "y": -20,
@@ -1115,7 +1115,7 @@
             "id": "071ea36f",
             "controlPoints": [
               {
-                "x": 1515.1328125,
+                "x": 1531.552734375,
                 "y": 2.452272727272728
               },
               {
@@ -1125,25 +1125,6 @@
             ],
             "sourceAnchor": 4,
             "targetAnchor": 1
-          },
-          {
-            "shape": "erdRelation",
-            "relation": "0,n:1",
-            "source": "47abddb9",
-            "target": "5d247b98",
-            "id": "385183b9",
-            "controlPoints": [
-              {
-                "x": 1895.548828125,
-                "y": -37.659090909090914
-              },
-              {
-                "x": 1515.1328125,
-                "y": -17.60340909090909
-              }
-            ],
-            "sourceAnchor": 0,
-            "targetAnchor": 2
           },
           {
             "shape": "erdRelation",
@@ -1249,23 +1230,12 @@
         {
           "relation": "0,n:1",
           "from": {
-            "entity": "sys_module_role",
+            "entity": "sys_menu_role",
             "field": "role_id"
           },
           "to": {
             "entity": "sys_role",
             "field": "role_id"
-          }
-        },
-        {
-          "relation": "0,n:1",
-          "from": {
-            "entity": "sys_module_item",
-            "field": "module_id"
-          },
-          "to": {
-            "entity": "sys_module_role",
-            "field": "module_id"
           }
         },
         {

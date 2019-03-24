@@ -15,15 +15,15 @@ import org.springframework.stereotype.Component;
 import org.springframework.web.context.request.RequestContextHolder;
 import org.springframework.web.context.request.ServletRequestAttributes;
 
+import com.jdy.common.dto.TokenUser;
 import com.jdy.common.util.IPUtil;
 import com.jdy.common.util.TokenUtil;
-import com.jdy.data.role.decker.SysRoleDecker;
-import com.jdy.data.role.decker.SysUserDecker;
-import com.jdy.data.role.dto.SysRole;
-import com.jdy.data.role.dto.SysUser;
-import com.jdy.data.syslog.decker.SysOperatingLogDecker;
-import com.jdy.data.syslog.dto.SysOperatingLog;
-import com.jdy.vo.data.TokenUser;
+import com.jdy.sys.log.decker.SysOperatingLogDecker;
+import com.jdy.sys.log.dto.SysOperatingLog;
+import com.jdy.sys.role.decker.SysRoleDecker;
+import com.jdy.sys.role.decker.SysUserDecker;
+import com.jdy.sys.role.dto.SysRole;
+import com.jdy.sys.role.dto.SysUser;
 
 import cn.hutool.extra.servlet.ServletUtil;
 import cn.hutool.json.JSONUtil;

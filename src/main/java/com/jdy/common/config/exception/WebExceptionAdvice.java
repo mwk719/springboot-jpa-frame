@@ -3,7 +3,7 @@ package com.jdy.common.config.exception;
 import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.bind.annotation.RestControllerAdvice;
 
-import com.jdy.vo.resp.RespVo;
+import com.jdy.common.vo.resp.RespVo;
 
 
 /**

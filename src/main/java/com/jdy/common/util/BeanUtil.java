@@ -1,6 +1,6 @@
 package com.jdy.common.util;
 
-import com.jdy.data.role.dto.SysUser;
+import com.jdy.sys.role.dto.SysUser;
 
 import cn.hutool.json.JSONUtil;
 
