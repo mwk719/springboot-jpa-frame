@@ -10,8 +10,10 @@ import org.springframework.web.bind.annotation.RestController;
 import com.jdy.common.annotation.SysLog;
 import com.jdy.common.config.exception.BusinessException;
 import com.jdy.common.dto.TokenUser;
+import com.jdy.common.dto.TokenUsers;
 import com.jdy.common.util.CodeMsg;
 import com.jdy.common.util.PswdUtil;
+import com.jdy.common.util.StringUtils;
 import com.jdy.common.util.TokenUtil;
 import com.jdy.common.vo.resp.RespVo;
 import com.jdy.sys.role.api.SysUserApi;
@@ -20,6 +22,7 @@ import com.jdy.sys.role.decker.SysUserDecker;
 import com.jdy.sys.role.decker.SysUserRoleDecker;
 import com.jdy.sys.role.dto.SysUser;
 import com.jdy.sys.role.dto.SysUserRole;
+import com.jdy.sys.role.vo.req.ReqSysUserVo;
 
 import cn.hutool.core.util.IdUtil;
 
@@ -37,15 +40,17 @@ public class SysUserService implements SysUserApi {
 	SysRolePermissionDecker sysRolePermissionDecker;
 
 	@Override
-	public RespVo<Object> login(String username, String password, HttpServletRequest request) {
+	public RespVo<Object> login(ReqSysUserVo sysUser, HttpServletRequest request) {
 
-		SysUser su = sysUserDecker.findByUsername(username);
+		StringUtils.throwCheckEmpty(sysUser.getUsername(), sysUser.getPassword());
+
+		SysUser su = sysUserDecker.findByUsername(sysUser.getUsername());
 		// 用户是否存在
 		if (su == null) {
 			throw new BusinessException(CodeMsg.NOTFINDUSER);
 		}
 		// 密码是否正确
-		if (!PswdUtil.getSysPswd(password, su.getCredentialsSalt()).equals(su.getPassword())) {
+		if (!PswdUtil.getSysPswd(sysUser.getPassword(), su.getCredentialsSalt()).equals(su.getPassword())) {
 			throw new BusinessException(CodeMsg.PSWDERROR);
 		}
 		// 查询角色
@@ -74,11 +79,11 @@ public class SysUserService implements SysUserApi {
 
 	@SysLog(value = "新增系统用户列表")
 	@Override
-	public void add(String username, String password) {
+	public void add(ReqSysUserVo sysUser) {
 		SysUser u = new SysUser();
 		u.setLoginNum(0);
 		u.setState(1);
-		u.setUsername(username);
+		u.setUsername(sysUser.getUsername());
 		// sha256加密
 		String salt = IdUtil.fastSimpleUUID();
 		u.setSalt(salt);
@@ -94,7 +99,7 @@ public class SysUserService implements SysUserApi {
 	@Override
 	public RespVo<Object> logout(HttpServletRequest request) throws BusinessException {
 		// 获取token
-		String gas = request.getHeader("gasToken");
+		String gas = request.getHeader(TokenUsers.GAS_TOKEN);
 		TokenUtil.removeToken(gas);
 		return RespVo.build().success();
 	}

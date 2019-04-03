@@ -1,6 +1,6 @@
 package com.jdy.common.util;
 
-import java.util.List;
+import java.util.Collection;
 
 import com.jdy.common.config.exception.BusinessException;
 
@@ -62,17 +62,17 @@ public class StringUtils {
 	}
 
 	@SuppressWarnings("rawtypes")
-	public static boolean listIsBlank(List list) {
+	public static boolean listIsBlank(Collection collection) {
 
-		if (list == null || list.size() == 0)
+		if (collection == null || collection.size() == 0)
 			return true;
 		return false;
 	}
 
 	@SuppressWarnings("rawtypes")
-	public static boolean listIsNotBlank(List list) {
+	public static boolean listIsNotBlank(Collection collection) {
 
-		if (list != null && list.size() > 0)
+		if (collection != null && collection.size() > 0)
 			return true;
 		return false;
 	}
@@ -96,25 +96,6 @@ public class StringUtils {
 	}
 
 	/**
-	 * 数组转string ，分割
-	 * 
-	 * @param str
-	 * @return
-	 */
-	public static String array2Str(String[] str) {
-		StringBuilder sb = new StringBuilder();
-		for (int i = 0; i < str.length; i++) {
-			if (i == 0) {
-				sb.append(str[i]);
-			} else {
-				sb.append("," + str[i]);
-			}
-		}
-		return sb.toString();
-
-	}
-
-	/**
 	 * 参数不能为空校验
 	 * 
 	 * @param objects
@@ -123,53 +104,6 @@ public class StringUtils {
 	public static void throwCheckEmpty(Object... objects) throws BusinessException {
 		if (isBlank(objects))
 			throw new BusinessException(CodeMsg.NOTEMPTY);
-
-	}
-
-	/**
-	 * 根据安装工单类型返回工单状态文字
-	 * 
-	 * @param workType
-	 *            2.装表、3.勘测通气、4.通气、5.装表通气
-	 * @return
-	 */
-	public static String workTypeStr(Integer workType) {
-
-		String workTypeStr = "装表";
-		switch (workType) {
-		case 2:
-			workTypeStr = "装表";
-			break;
-		case 4:
-			workTypeStr = "通气";
-			break;
-		case 5:
-			workTypeStr = "装表通气";
-			break;
-		}
-		return workTypeStr;
-
-	}
-
-	/**
-	 * 根据预约工单类型返回工单状态文字
-	 * 
-	 * @param workType
-	 *            2.装表、3.通气
-	 * @return
-	 */
-	public static String bespeakTypeStr(Integer bespeakType) {
-
-		String bespeakTypeStr = "装表";
-		switch (bespeakType) {
-		case 2:
-			bespeakTypeStr = "装表";
-			break;
-		case 3:
-			bespeakTypeStr = "通气";
-			break;
-		}
-		return bespeakTypeStr;
 
 	}
 

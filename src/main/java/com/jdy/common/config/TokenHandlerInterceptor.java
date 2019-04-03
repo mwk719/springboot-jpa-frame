@@ -6,6 +6,7 @@ import javax.servlet.http.HttpServletResponse;
 import org.springframework.web.servlet.handler.HandlerInterceptorAdapter;
 import org.springframework.web.servlet.resource.DefaultServletHttpRequestHandler;
 
+import com.jdy.common.dto.TokenUsers;
 import com.jdy.common.util.TokenUtil;
 
 /**
@@ -23,7 +24,7 @@ public class TokenHandlerInterceptor extends HandlerInterceptorAdapter {
 		// 跨域
 		response.setHeader("Access-Control-Allow-Origin", "*");
 		// 获取token
-		String gas = request.getHeader("gasToken");
+		String gas = request.getHeader(TokenUsers.GAS_TOKEN);
 		//获取请求当时的uri
 
 		if (handler instanceof DefaultServletHttpRequestHandler) {

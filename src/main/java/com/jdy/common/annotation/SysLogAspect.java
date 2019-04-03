@@ -16,6 +16,7 @@ import org.springframework.web.context.request.RequestContextHolder;
 import org.springframework.web.context.request.ServletRequestAttributes;
 
 import com.jdy.common.dto.TokenUser;
+import com.jdy.common.dto.TokenUsers;
 import com.jdy.common.util.IPUtil;
 import com.jdy.common.util.TokenUtil;
 import com.jdy.sys.log.decker.SysOperatingLogDecker;
@@ -85,8 +86,8 @@ public class SysLogAspect {
 				.getRequest();
 
 		// 获取token
-		String gas = request.getHeader("gasToken");
-		TokenUser tu = TokenUtil.decryptTokenUser(gas);
+		String gas = request.getHeader(TokenUsers.GAS_TOKEN);
+		TokenUser tu = TokenUtil.getTokenUser(gas);
 		// 获取用户名
 		SysUser su = sysUserDecker.findById(tu.getAdminId());
 		if (su == null) {
