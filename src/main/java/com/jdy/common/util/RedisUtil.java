@@ -16,11 +16,9 @@ public final class RedisUtil {
 
 	private static Logger logger = LoggerFactory.getLogger(RedisUtil.class);
 	// Redis服务器IP
-	final private static String ADDR = "120.79.207.240";
+	final private static String ADDR = "127.0.0.1";
 	final private static String pswd = "mwk666";
 	
-//	final private static String ADDR = "1.180.170.250";
-//	final private static String pswd = "hainuoranqi";
 	// Redis的端口号
 	final private static int PORT = 6379;
 	//
